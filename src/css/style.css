@@ -1,19 +1,72 @@
 /* CSS Gerais */
 
 * {
-   box-sizing: border-box;
    margin: 0;
    padding: 0;
+   box-sizing: border-box;
 }
 
 body {
    display: flex;
    flex-direction: column;
    background-color: black;
+   height: 100vh;
 }
 
 /* CSS do Controle */
 
+.controle {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 20px;
+   height: 100px;
+   background-color: #222222;
+   padding: 10px;
+}
+
+.controle .mostrador {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: #22f522;
+   border: 10px solid #666666;
+   height: 100%;
+   width: 200px;
+   border-radius: 8px;
+   font-size: 2.5rem;
+}
+
+/* CSS da calçada */
+
+.quadra {
+   display: flex;
+   justify-content: space-around;
+   align-items: flex-end;
+   flex: 1;
+}
+
+/* CSS Arvore */
+.arvore {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.arvore::before {
+   content: "";
+   width: 150px;
+   height: 150px;
+   border-radius: 50%;
+   background-color: #008000;
+}
+
+.arvore::after {
+   content: "";
+   width: 20px;
+   height: 100px;
+   background-color: #4d3131;
+}
 
 /* CSS da Rua */
 
@@ -22,7 +75,8 @@ body {
    align-items: center;
    height: 100px;
    background-color: #777777;
-   gap: 30px
+   gap: 30px;
+   border-top: 10px solid #ffffff;
 }
 
 .rua > .faixa {
