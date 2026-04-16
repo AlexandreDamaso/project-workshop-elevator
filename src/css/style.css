@@ -1,9 +1,12 @@
 /* CSS Gerais */
 
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
 * {
    margin: 0;
    padding: 0;
    box-sizing: border-box;
+   font-family: "VT323", monospace;
 }
 
 body {
@@ -23,6 +26,7 @@ body {
    height: 100px;
    background-color: #222222;
    padding: 10px;
+   margin-bottom: 10px;
 }
 
 .controle .mostrador {
@@ -35,6 +39,18 @@ body {
    width: 200px;
    border-radius: 8px;
    font-size: 2.5rem;
+}
+
+.controle button {
+   height: 70px;
+   width: 70px;
+   border-radius: 50%;
+   font-size: 2rem;
+   border: 6px solid #999999;
+}
+
+.controle button.destaque {
+   border-color: #ffff00;
 }
 
 /* CSS da calçada */
@@ -83,4 +99,102 @@ body {
    flex: 1;
    height: 10px;
    background-color: #dddddd;
+}
+
+/* CSS do Prédio */
+
+.predio {
+   display: flex;
+   width: 500px;
+   height: 100%;
+   background-color: #319da0;
+   gap: 10px;
+}
+
+.coluna {
+   display: flex;
+   flex: 2;
+   flex-direction: column;
+   background-color: #00000066;
+}
+
+
+.andar {
+   display: flex;
+   flex: 1;
+   border-bottom: 2px solid #ffffff;
+   justify-content: center;
+   align-items: flex-end;
+}
+
+.porta {
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+   padding-left: 8px;
+   width: 40%;
+   height: 80%;
+   background-color: #a52a2a;
+   border: 5px solid #ffffff66;
+   border-bottom-width: 0;
+}
+
+.porta::after{
+   content: "";
+   width: 10px;
+   height: 5px;
+   background-color: #ffffff66;
+   border-radius: 20%;
+}
+
+.terreo {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex: 1;
+   border-bottom: 2px solid transparent;
+}
+
+.janela {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: relative;
+   background-color: #068888;
+   border: 5px solid #ffffffcc;
+   height: 50%;
+   width: 40%;
+}
+
+.janela::after {
+   content: "";
+   position: absolute;
+   border: 1px solid #ffffffcc;
+   height: 100%;
+}
+
+.janela::before {
+   content: "";
+   position: absolute;
+   border: 1px solid #ffffffcc;
+   width: 100%;
+}
+
+.poco {
+   position: relative;
+   display: flex;
+   justify-content: center;
+   flex: 1;
+   background-color: #ffffff99;
+   /* background-color: #fff9; */
+}
+
+.elevador {
+   position: absolute;
+   border: 3px solid #000000;
+   border-top-width: 10px;
+   background-color: #ffffffa1;
+   width: 80%;
+   height: 100px;
+   bottom: 0;
 }
