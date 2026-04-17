@@ -9,7 +9,6 @@
       })
    }
 
-
    // Criar um andar
    function criarAndar(numeroDoAndar) {
       const porta = document.createElement('div')
@@ -32,7 +31,7 @@
 
       const terreo = document.createElement('div')
       terreo.classList.add('terreo')
-      terreo.setAttribute('numero-do-andar', 't')
+      terreo.setAttribute('numero-do-andar', '0')
 
       terreo.appendChild(janela)
 
@@ -51,7 +50,61 @@
          andares.appendChild(criarTerreo())
       })
    }
+   
+   // Definir tamanho do elevador
+   function tamanhoElevador() {
+      const terreo = document.querySelector('.terreo')
+      let alturaDoElevador = terreo.offsetHeight
+      return alturaDoElevador
+   }
+   
+   // Criar o Elevador
+   function criarElevador() {
+      const poco = document.querySelector('.poco')
+      
+      const elevador = document.createElement('div')
+      elevador.classList.add('elevador')
+      // console.log(typeof tamanhoElevador())
+      elevador.style.height = tamanhoElevador() + 'px'
+      
+      poco.appendChild(elevador)
+   }
 
+   // Mover Elevador
+   function moverElevador(andar) {
+      // const numeroAndar = andar
+
+      const elevador = document.querySelector('.elevador')
+
+      const elevadorIrPara = andar * tamanhoElevador()
+
+      elevador.style.bottom = elevadorIrPara + 'px'
+
+      atualizarMostrador(andar == 0 ? 'Térreo' : `${andar}º andar`)
+   }
+
+   // Mudar o nome do mostrador
+   function atualizarMostrador(destino) {
+      const mostrador = document.querySelector('.mostrador')
+      mostrador.innerHTML = destino
+   }
+
+   // Escolher Andar
+   function escolherAndar() {
+      const botoes = document.querySelectorAll('[destino]')
+      // console.log(botoes)
+      botoes.forEach(botao => {
+         const destino = botao.getAttribute('destino')
+         botao.onclick = function () {
+            moverElevador(destino)
+         }
+         
+      })
+   }
+   
    criarClasse()
    criarAndares()
+   criarElevador()
+   escolherAndar()
+   
 })()

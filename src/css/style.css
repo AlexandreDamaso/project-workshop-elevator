@@ -195,6 +195,6 @@ body {
    border-top-width: 10px;
    background-color: #ffffffa1;
    width: 80%;
-   height: 100px;
+   /* height: 100px; */
    bottom: 0;
 }
