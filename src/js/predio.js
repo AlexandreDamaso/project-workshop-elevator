@@ -1,20 +1,13 @@
 (function() {
 
-   //
+   // Criando classe com numero de andares podendo alterar número de andares
    function criarClasse() {
-      valNume = 6
-      const coluna = document.querySelectorAll('.coluna')
-      const numDeAndares = document.createAttribute('numeroandares')
-      console.log(numDeAndares)
-      // numDeAndares.setAttribute('numeroandares', valNume)
-   
-      // numDeAndares.classList.add('numero-andares') 
-      // numDeAndares.values('6') 
-
-      // return numDeAndares
+      qtdAndares = 6
+      const colunas = document.querySelectorAll('div.coluna')
+      colunas.forEach(incluiAndares => {
+         incluiAndares.setAttribute('numero-de-andares', qtdAndares)
+      })
    }
-
-
 
 
    // Criar um andar
@@ -39,25 +32,26 @@
 
       const terreo = document.createElement('div')
       terreo.classList.add('terreo')
+      terreo.setAttribute('numero-do-andar', 't')
 
       terreo.appendChild(janela)
 
       return terreo
-
    }
 
    // Criar o Térreo e os andares
    function criarAndares() {
-      const valorNumeroDeAndares = document.querySelectorAll(['[numeroDeAndares]'])
+      const valorNumeroDeAndares = document.querySelectorAll(['[numero-de-andares]'])
+
       valorNumeroDeAndares.forEach(andares => {
-         const qtdDeAndares = +andares.getAttribute('numeroDeAndares')
-         for(i = 0; i < qtdDeAndares; i++) {
+         const qtdDeAndares = +andares.getAttribute('numero-de-andares')
+         for(i = qtdDeAndares; i > 0; i--) {
             andares.appendChild(criarAndar(i))
          }
-
          andares.appendChild(criarTerreo())
       })
    }
+
    criarClasse()
    criarAndares()
 })()
