@@ -197,4 +197,5 @@ body {
    width: 80%;
    /* height: 100px; */
    bottom: 0;
+   transition: ease-in-out 2s;
 }

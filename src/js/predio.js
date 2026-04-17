@@ -81,6 +81,15 @@
       elevador.style.bottom = elevadorIrPara + 'px'
 
       atualizarMostrador(andar == 0 ? 'Térreo' : `${andar}º andar`)
+
+      const posicaoAtual = andar
+      const posicaoFinal = valor
+
+      
+
+
+
+      // atualizarMostrador(andar == 0 ? 'Térreo' : `${andar}º andar`)
    }
 
    // Mudar o nome do mostrador
