@@ -95,7 +95,7 @@ body {
    border-top: 10px solid #ffffff;
 }
 
-.rua > .faixa {
+.rua>.faixa {
    flex: 1;
    height: 10px;
    background-color: #dddddd;
@@ -139,7 +139,7 @@ body {
    border-bottom-width: 0;
 }
 
-.porta::after{
+.porta::after {
    content: "";
    width: 10px;
    height: 5px;
