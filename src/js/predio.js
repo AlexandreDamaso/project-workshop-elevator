@@ -51,6 +51,18 @@
       })
    }
    
+   // Criar o Elevador
+   function criarElevador() {
+      const poco = document.querySelector('.poco')
+      
+      const elevador = document.createElement('div')
+      elevador.classList.add('elevador')
+      
+      elevador.style.height = tamanhoElevador() + 'px'
+      
+      poco.appendChild(elevador)
+   }
+   
    // Definir tamanho do elevador
    function tamanhoElevador() {
       const terreo = document.querySelector('.terreo')
@@ -58,62 +70,51 @@
       return alturaDoElevador
    }
    
-   // Criar o Elevador
-   function criarElevador() {
-      const poco = document.querySelector('.poco')
-      
-      const elevador = document.createElement('div')
-      elevador.classList.add('elevador')
-      // console.log(typeof tamanhoElevador())
-      elevador.style.height = tamanhoElevador() + 'px'
-      
-      poco.appendChild(elevador)
-   }
-
    // Mover Elevador
    function moverElevador(andar) {
-      // const numeroAndar = andar
-
       const elevador = document.querySelector('.elevador')
 
       const elevadorIrPara = andar * tamanhoElevador()
 
       elevador.style.bottom = elevadorIrPara + 'px'
-
-      atualizarMostrador(andar == 0 ? 'Térreo' : `${andar}º andar`)
-
-      const posicaoAtual = andar
-      const posicaoFinal = valor
-
-      
-
-
-
-      // atualizarMostrador(andar == 0 ? 'Térreo' : `${andar}º andar`)
    }
-
-   // Mudar o nome do mostrador
-   function atualizarMostrador(destino) {
-      const mostrador = document.querySelector('.mostrador')
-      mostrador.innerHTML = destino
-   }
-
-   // Escolher Andar
-   function escolherAndar() {
-      const botoes = document.querySelectorAll('[destino]')
-      // console.log(botoes)
-      botoes.forEach(botao => {
-         const destino = botao.getAttribute('destino')
-         botao.onclick = function () {
-            moverElevador(destino)
+   
+   // Mudar o mostrador
+   function atualizarMostrador(destino, localizacaoAtual) {
+         const mostrador = document.querySelector('.mostrador')
+         
+         if (localizacaoAtual < destino) {
+            mostrador.innerHTML = "Subindo"
+         } else if (localizacaoAtual > destino) {
+            mostrador.innerHTML = "Descendo"
+         } else {
+            mostrador.innerHTML = "Parado"
          }
          
-      })
-   }
+         let mostrarAndar = setInterval(() => {
+            let localizacaoAndar = (destino == 0 ? 'Térreo' : `${destino}º andar`)
+            mostrador.innerHTML = localizacaoAndar
+            clearInterval(mostrarAndar)
+         }, 2000)
+      }
+      
+      // Escolher Andar
+      function escolherAndar() {
+         const botoes = document.querySelectorAll('[destino]')
+
+         let localizacaoAtual = 0
+         botoes.forEach(botao => {
+            const destino = +botao.getAttribute('destino')
+            botao.onclick = function () {
+               moverElevador(destino)
+               atualizarMostrador(destino, localizacaoAtual)
+               localizacaoAtual = destino
+            }
+         })
+      }
    
    criarClasse()
    criarAndares()
    criarElevador()
    escolherAndar()
-   
 })()
